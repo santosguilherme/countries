@@ -63,7 +63,7 @@ TBD
 - React Hooks
 - Tests with React testing library
 - Animations with [popmotion](https://github.com/popmotion/popmotion)
-- Facebook i18n library
+- [Facebook i18n library](https://facebookincubator.github.io/fbt/)
 - React Router?
 - Material UI ? Antd? Semantic UI? TDB
 - [react-a11y](https://github.com/reactjs/react-a11y)

@@ -62,7 +62,10 @@ TBD
 ## Technical features
 - React Hooks
 - Tests with React testing library
-- Animations with 
+- Animations with [popmotion](https://github.com/popmotion/popmotion)
 - Facebook i18n library
-- React Router
-- Material UI ? Antd? TDV
+- React Router?
+- Material UI ? Antd? Semantic UI? TDB
+- [react-a11y](https://github.com/reactjs/react-a11y)
+- [react-virtualized](https://github.com/bvaughn/react-virtualized)
+

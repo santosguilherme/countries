@@ -48,7 +48,7 @@ Query {
 https://github.com/trevorblades/countries
 
 ### Client
-TBD
+https://www.apollographql.com/docs/react``
 
 ## Features
 - [ ] List of continents (code and name)
@@ -61,11 +61,14 @@ TBD
 
 ## Technical features
 - React Hooks
+- React Lazy
+- React Context API
 - Tests with React testing library
 - Animations with [popmotion](https://github.com/popmotion/popmotion)
 - [Facebook i18n library](https://facebookincubator.github.io/fbt/)
 - React Router?
-- Material UI ? Antd? Semantic UI? TDB
+- [Ant Design](https://github.com/ant-design/ant-design)
+- [material-ui](https://github.com/mui-org/material-ui)
 - [react-a11y](https://github.com/reactjs/react-a11y)
 - [react-virtualized](https://github.com/bvaughn/react-virtualized)
 

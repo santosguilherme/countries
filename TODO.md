@@ -48,7 +48,7 @@ Query {
 https://github.com/trevorblades/countries
 
 ### Client
-https://www.apollographql.com/docs/react``
+https://www.apollographql.com/docs/react
 
 ## Features
 - [ ] List of continents (code and name)

@@ -51,10 +51,10 @@ https://github.com/trevorblades/countries
 https://www.apollographql.com/docs/react
 
 ## Features
-- [ ] List of continents (code and name)
-- [ ] List of countries (code, name and native)
+- [x] List of continents (code and name)
+- [x] List of countries (code, name and native)
 - [ ] Show country details
-- [ ] List languages (code, name and rlt)
+- [x] List languages (code, name, native and rlt)
 - [ ] Show continent details
 - [ ] Filter/sort continents list
 - [ ] Filter/sort countries list

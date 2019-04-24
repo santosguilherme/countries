@@ -14,7 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import {ApolloProvider} from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 
-import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect, NavLink} from 'react-router-dom';
 
 import styled, {ThemeProvider} from 'styled-components'
 import GlobalStyle from '../theme/GlobalStyle';
@@ -22,6 +22,7 @@ import GlobalStyle from '../theme/GlobalStyle';
 import Continents from '../Continents/Continents';
 import Countries from '../Countries/Countries';
 import Languages from '../Languages/Languages';
+import ContinentDetails from '../Continents/ContinentDetails';
 
 
 const Container = styled.div`
@@ -33,7 +34,7 @@ const Container = styled.div`
 const Content = styled.main`
   flex: 1;
   overflow-y: auto;
-  padding: 1.5rem;
+  padding: 1rem;
 `;
 
 const BottomNavigationContent = styled.nav`
@@ -76,9 +77,17 @@ class App extends Component {
                 </AppBar>
                 <Content>
                   <Paper>
-                    <Route exact path="/continents" component={Continents}/>
-                    <Route exact path="/countries" component={Countries}/>
-                    <Route exact path="/languages" component={Languages}/>
+                    <Switch>
+                      <Route exact path="/continents" component={Continents}/>
+                      <Route exact path="/continents/:code" component={ContinentDetails}/>
+                      <Route exact path="/countries" component={Countries}/>
+                      <Route exact path="/languages" component={Languages}/>
+                      <Route
+                        exact
+                        path="/"
+                        render={() => <Redirect to={{pathname: '/continents'}}/>}
+                      />
+                    </Switch>
                   </Paper>
                 </Content>
                 <BottomNavigationContent>

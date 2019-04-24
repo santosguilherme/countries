@@ -14,11 +14,16 @@ const GET_LANGUAGES = gql`
       name
       code
       native
+      rtl
     }
   }
 `;
 
 function Languages(props) {
+
+  const primaryText = language => language.rtl
+    ? `${language.name} - (RTL)`
+    : language.name;
 
   return (
     <QueryList
@@ -29,7 +34,7 @@ function Languages(props) {
           <Avatar>
             {language.code}
           </Avatar>
-          <ListItemText primary={language.name} secondary={language.native}/>
+          <ListItemText primary={primaryText(language)} secondary={language.native}/>
         </ListItem>
       )}
     />

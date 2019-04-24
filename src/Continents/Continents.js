@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { withRouter } from 'react-router-dom';
+
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
@@ -23,7 +26,7 @@ function Continents(props) {
       query={GET_CONTINENTS}
       entity="continents"
       renderItem={continent => (
-        <ListItem key={continent.code}>
+        <ListItem key={continent.code} onClick={() => props.history.push(`/continents/${continent.code}`)} button>
           <Avatar>
             {continent.code}
           </Avatar>
@@ -34,4 +37,4 @@ function Continents(props) {
   );
 }
 
-export default Continents;
+export default withRouter(Continents);

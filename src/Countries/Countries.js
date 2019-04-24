@@ -1,11 +1,8 @@
 import React from 'react';
 
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-
 import gql from 'graphql-tag';
 import QueryList from '../commons/components/QueryList/QueryList';
+import CountryListItem from './CountryListItem';
 
 
 const GET_COUNTRIES = gql`
@@ -26,12 +23,7 @@ function Countries(props) {
       query={GET_COUNTRIES}
       entity="countries"
       renderItem={country => (
-        <ListItem key={country.code}>
-          <Avatar>
-            {country.code}
-          </Avatar>
-          <ListItemText primary={`${country.name} - ${country.emoji}`} secondary={country.native}/>
-        </ListItem>
+        <CountryListItem key={country.code} country={country}/>
       )}
     />
   );

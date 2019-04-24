@@ -58,6 +58,11 @@ https://www.apollographql.com/docs/react
 - [ ] Show continent details
 - [ ] Filter/sort continents list
 - [ ] Filter/sort countries list
+- [ ] Tab synchronized with current route (sub routes)
+- [ ] Extract routes
+- [ ] Prettier/airbnb
+- [ ] Toolbar with right route name
+- [ ] Back button?
 
 ## Technical features
 - React Hooks

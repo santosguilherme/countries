@@ -46,6 +46,9 @@ const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com'
 });
 
+// https://material-ui.com/guides/composition/#caveat-with-refs
+const RouterLink = React.forwardRef((props, ref) => <NavLink {...props} innerRef={ref} />);
+
 class App extends Component {
   state = {
     currentTab: 'continents' // todo: based on active route
@@ -76,7 +79,7 @@ class App extends Component {
                   </Toolbar>
                 </AppBar>
                 <Content>
-                  <Paper>
+                  <Paper elevation={2}>
                     <Switch>
                       <Route exact path="/continents" component={Continents}/>
                       <Route exact path="/continents/:code" component={ContinentDetails}/>
@@ -94,14 +97,14 @@ class App extends Component {
                   <BottomNavigation value={currentTab} onChange={this.handleChangeTab}>
                     <BottomNavigationAction
                       label="Continentes" value="continents" icon={<PublicIcon/>}
-                      component={NavLink} to="/continents"
+                      component={RouterLink} to="/continents"
                     />
                     <BottomNavigationAction
                       label="Países" value="countries" icon={<OutlinedFlagIcon/>}
-                      component={NavLink} to="/countries"
+                      component={RouterLink} to="/countries"
                     />
                     <BottomNavigationAction
-                      label="Línguas" value="languages" icon={<LanguageIcon/>} component={NavLink}
+                      label="Línguas" value="languages" icon={<LanguageIcon/>} component={RouterLink}
                       to="/languages"
                     />
                   </BottomNavigation>

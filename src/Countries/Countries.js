@@ -1,7 +1,9 @@
 import React from 'react';
 
 import gql from 'graphql-tag';
+
 import QueryList from '../commons/components/QueryList/QueryList';
+
 import CountryListItem from './CountryListItem';
 
 
@@ -17,7 +19,6 @@ const GET_COUNTRIES = gql`
 `;
 
 function Countries(props) {
-
   return (
     <QueryList
       query={GET_COUNTRIES}

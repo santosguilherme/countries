@@ -7,6 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 import gql from 'graphql-tag';
 import QueryList from '../commons/components/QueryList/QueryList';
 import QueryListItem from '../commons/components/QueryList/QueryListItem';
+import LanguageListItem from './LanguageListItem';
 
 
 const GET_LANGUAGES = gql`
@@ -21,21 +22,14 @@ const GET_LANGUAGES = gql`
 `;
 
 function Languages(props) {
-  const primaryText = language => language.rtl
-    ? `${language.name} - (RTL)`
-    : language.name;
-
   return (
     <QueryList
       query={GET_LANGUAGES}
       entity="languages"
       renderItem={language => (
-        <QueryListItem
+        <LanguageListItem
           key={language.code}
-          entity={language}
-          avatar={language.code}
-          primaryText={primaryText(language)}
-          secondaryText={language.native}
+          language={language}
         />
       )}
     />

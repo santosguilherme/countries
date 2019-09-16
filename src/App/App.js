@@ -23,6 +23,7 @@ import Continents from '../Continents/Continents';
 import Countries from '../Countries/Countries';
 import Languages from '../Languages/Languages';
 import ContinentDetails from '../Continents/ContinentDetails';
+import CountryDetails from '../Countries/CountryDetails';
 
 
 const Container = styled.div`
@@ -84,6 +85,7 @@ class App extends Component {
                       <Route exact path="/continents" component={Continents}/>
                       <Route exact path="/continents/:code" component={ContinentDetails}/>
                       <Route exact path="/countries" component={Countries}/>
+                      <Route exact path="/countries/:code" component={CountryDetails}/>
                       <Route exact path="/languages" component={Languages}/>
                       <Route
                         exact

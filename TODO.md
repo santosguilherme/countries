@@ -63,6 +63,8 @@ https://www.apollographql.com/docs/react
 - [ ] Prettier/airbnb
 - [ ] Toolbar with right route name
 - [ ] Back button?
+- [ ] Collapsed panel in Entity details pages
+- [ ] Reuse components
 
 ## Technical features
 - React Hooks

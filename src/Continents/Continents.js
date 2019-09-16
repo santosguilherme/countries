@@ -18,7 +18,7 @@ const GET_CONTINENTS = gql`
 `;
 
 function Continents(props) {
-  const handleContinentListItemClick = continent => {
+  const handleContinentClick = continent => {
     props.history.push(`/continents/${continent.code}`);
   };
 
@@ -30,7 +30,7 @@ function Continents(props) {
         <QueryListItem
           key={continent.code}
           entity={continent}
-          onClick={handleContinentListItemClick}
+          onClick={handleContinentClick}
           avatar={continent.code}
           primaryText={continent.name}
         />

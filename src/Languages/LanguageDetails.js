@@ -16,26 +16,24 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FormatTextdirectionLToRIcon from '@material-ui/icons/FormatTextdirectionLToR';
+import FormatTextdirectionRToLIcon from '@material-ui/icons/FormatTextdirectionRToL';
 
 import CountryListItem from '../Countries/CountryListItem';
 
-const GET_CONTINENT_DETAILS = gql`
-  query Continent($code: String!) {
-    continent(code: $code) {
-      name
+const GET_LANGUAGE_DETAILS = gql`
+  query Language($code: String!) {
+    language(code: $code) {
       code
-      countries {
-        code
-        name
-        emoji
-        native
-      }
+      name
+      native
+      rtl
     }
   }
 `;
 
 const Header = styled.div`
-  padding: 1em;
+  padding: 1rem;
 `;
 
 const Details = styled.div`
@@ -60,12 +58,20 @@ const StyledAvatar = styled(Avatar)`
   background-color: ${props => props.theme.palette.primary.main};
 `;
 
-function ContinentDetails(props) {
+const Content = styled.div`
+  padding: 1rem;
+  
+  div + div {
+    margin-top: 1rem;
+  }
+`;
+
+function LanguageDetails(props) {
   const {match} = props;
   const {code} = match.params;
 
   return (
-    <Query query={GET_CONTINENT_DETAILS} variables={{code}}>
+    <Query query={GET_LANGUAGE_DETAILS} variables={{code}}>
       {({loading, error, data}) => {
         if (loading) {
           return <Loading/>;
@@ -75,7 +81,9 @@ function ContinentDetails(props) {
           return <Error>{error.message}</Error>;
         }
 
-        const {name, code, countries} = data.continent;
+        const {code, name, native, rtl } = data.language;
+
+        console.log('data.language', data.language)
 
         return (
           <>
@@ -91,18 +99,18 @@ function ContinentDetails(props) {
               </Details>
             </Header>
             <Divider variant="middle"/>
-            <List
-              subheader={
-                <ListSubheader component="div" disableSticky>
-                  Países ({countries.length})
-                </ListSubheader>
-              }
-              dense
-            >
-              {countries.map(country => (
-                <CountryListItem key={country.code} country={country}/>
-              ))}
-            </List>
+            <Content>
+              <div>
+                <Typography variant="caption">native</Typography>
+                <Typography>{native}</Typography>
+              </div>
+              <div>
+                <Typography variant="caption" component="p">RTL</Typography>
+                {rtl
+                  ? (<FormatTextdirectionRToLIcon />)
+                  : (<FormatTextdirectionLToRIcon />)}
+              </div>
+            </Content>
           </>
         );
       }}
@@ -110,4 +118,4 @@ function ContinentDetails(props) {
   );
 }
 
-export default ContinentDetails;
+export default LanguageDetails;

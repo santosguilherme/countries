@@ -53,18 +53,19 @@ https://www.apollographql.com/docs/react
 ## Features
 - [x] List of continents (code and name)
 - [x] List of countries (code, name and native)
-- [ ] Show country details
+- [x] Show country details
 - [x] List languages (code, name, native and rlt)
-- [ ] Show continent details
-- [ ] Filter/sort continents list
-- [ ] Filter/sort countries list
+- [x] Show continent details
+- [x] Show language details
 - [ ] Tab synchronized with current route (sub routes)
+- [ ] Toolbar with right route name
 - [ ] Extract routes
 - [ ] Prettier/airbnb
-- [ ] Toolbar with right route name
+- [ ] Reuse components
 - [ ] Back button?
 - [ ] Collapsed panel in Entity details pages
-- [ ] Reuse components
+- [ ] Filter/sort continents list
+- [ ] Filter/sort countries list
 
 ## Technical features
 - React Hooks

@@ -10,6 +10,13 @@ import Loading from '../commons/components/Loading/Loading';
 import Error from '../commons/components/Error/Error';
 
 import LanguageListItem from '../Languages/LanguageListItem';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import styled from 'styled-components';
+import Avatar from '@material-ui/core/Avatar';
+
+import PhoneIcon from '@material-ui/icons/Phone';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
 const GET_COUNTRY_DETAILS = gql`
   query Country($code: String!) {
@@ -33,6 +40,42 @@ const GET_COUNTRY_DETAILS = gql`
   }
 `;
 
+const Header = styled.div`
+  padding: 1em;
+`;
+
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  ${DetailsName} {
+    flex: 1;
+  }
+`;
+
+const DetailsName = styled.div`
+  display: flex;
+  align-items: center;
+  
+  h1 {
+    margin: 0 1rem;
+  }
+`;
+
+const StyledAvatar = styled(Avatar)`
+  background-color: ${props => props.theme.palette.primary.main};
+`;
+
+const DetailsRow = styled.div`
+  padding: 0 1rem 1rem;
+  display: flex;
+  align-items: center;
+  
+  span + span, svg + span {
+    margin-left: 1rem;
+  }
+`;
+
 function CountryDetails(props) {
   const {match} = props;
   const {code} = match.params;
@@ -48,11 +91,44 @@ function CountryDetails(props) {
           return <Error>{error.message}</Error>;
         }
 
-        const {name, languages} = data.country;
+        const {name, native, currency, phone, emoji, languages} = data.country;
 
         return (
-          <div>
-            {name}
+          <>
+            <Header>
+              <Details>
+                <Typography variant="overline">Detalhes</Typography>
+                <DetailsName>
+                  <StyledAvatar>
+                    {code}
+                  </StyledAvatar>
+                  <Typography variant="h5" component="h1">
+                    {name}
+                  </Typography>
+                </DetailsName>
+              </Details>
+            </Header>
+            <DetailsRow>
+              <Typography variant="h4" component="span">
+                {emoji}
+              </Typography>
+              <Typography variant="h6" component="span">
+                {native}
+              </Typography>
+            </DetailsRow>
+            <DetailsRow>
+              <PhoneIcon color="primary" />
+              <Typography variant="h6" component="span">
+                {phone}
+              </Typography>
+            </DetailsRow>
+            <DetailsRow>
+              <AttachMoneyIcon color="primary" />
+              <Typography variant="h6" component="span">
+                {currency}
+              </Typography>
+            </DetailsRow>
+            <Divider variant="middle"/>
             <List
               subheader={
                 <ListSubheader component="div" disableSticky>Linguas</ListSubheader>
@@ -66,7 +142,7 @@ function CountryDetails(props) {
                 />
               ))}
             </List>
-          </div>
+          </>
         );
       }}
     </Query>

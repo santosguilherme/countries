@@ -1,5 +1,8 @@
 import React, {Component, Fragment} from 'react';
 
+import {StylesProvider} from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -24,6 +27,7 @@ import Countries from '../Countries/Countries';
 import Languages from '../Languages/Languages';
 import ContinentDetails from '../Continents/ContinentDetails';
 import CountryDetails from '../Countries/CountryDetails';
+import LanguageDetails from '../Languages/LanguageDetails';
 
 
 const Container = styled.div`
@@ -48,7 +52,9 @@ const client = new ApolloClient({
 });
 
 // https://material-ui.com/guides/composition/#caveat-with-refs
-const RouterLink = React.forwardRef((props, ref) => <NavLink {...props} innerRef={ref} />);
+const RouterLink = React.forwardRef((props, ref) => <NavLink {...props} innerRef={ref}/>);
+
+const defaultTheme = createMuiTheme();
 
 class App extends Component {
   state = {
@@ -65,57 +71,60 @@ class App extends Component {
     const {currentTab} = this.state;
 
     return (
-      <ThemeProvider theme={{}}>
-        <ApolloProvider client={client}>
-          <Router>
-            <Fragment>
-              <GlobalStyle/>
-              <CssBaseline/>
-              <Container>
-                <AppBar position="static">
-                  <Toolbar>
-                    <Typography variant="h6" color="inherit">
-                      Continentes {/*// todo: based on active route*/}
-                    </Typography>
-                  </Toolbar>
-                </AppBar>
-                <Content>
-                  <Paper elevation={2}>
-                    <Switch>
-                      <Route exact path="/continents" component={Continents}/>
-                      <Route exact path="/continents/:code" component={ContinentDetails}/>
-                      <Route exact path="/countries" component={Countries}/>
-                      <Route exact path="/countries/:code" component={CountryDetails}/>
-                      <Route exact path="/languages" component={Languages}/>
-                      <Route
-                        exact
-                        path="/"
-                        render={() => <Redirect to={{pathname: '/continents'}}/>}
+      <StylesProvider injectFirst>
+        <ThemeProvider theme={defaultTheme}>
+          <ApolloProvider client={client}>
+            <Router>
+              <Fragment>
+                <GlobalStyle/>
+                <CssBaseline/>
+                <Container>
+                  <AppBar position="static">
+                    <Toolbar>
+                      <Typography variant="h6" color="inherit">
+                        Continentes {/*// todo: based on active route*/}
+                      </Typography>
+                    </Toolbar>
+                  </AppBar>
+                  <Content>
+                    <Paper elevation={2}>
+                      <Switch>
+                        <Route exact path="/continents" component={Continents}/>
+                        <Route exact path="/continents/:code" component={ContinentDetails}/>
+                        <Route exact path="/countries" component={Countries}/>
+                        <Route exact path="/countries/:code" component={CountryDetails}/>
+                        <Route exact path="/languages" component={Languages}/>
+                        <Route exact path="/languages/:code" component={LanguageDetails}/>
+                        <Route
+                          exact
+                          path="/"
+                          render={() => <Redirect to={{pathname: '/continents'}}/>}
+                        />
+                      </Switch>
+                    </Paper>
+                  </Content>
+                  <BottomNavigationContent>
+                    <BottomNavigation value={currentTab} onChange={this.handleChangeTab}>
+                      <BottomNavigationAction
+                        label="Continentes" value="continents" icon={<PublicIcon/>}
+                        component={RouterLink} to="/continents"
                       />
-                    </Switch>
-                  </Paper>
-                </Content>
-                <BottomNavigationContent>
-                  <BottomNavigation value={currentTab} onChange={this.handleChangeTab}>
-                    <BottomNavigationAction
-                      label="Continentes" value="continents" icon={<PublicIcon/>}
-                      component={RouterLink} to="/continents"
-                    />
-                    <BottomNavigationAction
-                      label="Países" value="countries" icon={<OutlinedFlagIcon/>}
-                      component={RouterLink} to="/countries"
-                    />
-                    <BottomNavigationAction
-                      label="Línguas" value="languages" icon={<LanguageIcon/>} component={RouterLink}
-                      to="/languages"
-                    />
-                  </BottomNavigation>
-                </BottomNavigationContent>
-              </Container>
-            </Fragment>
-          </Router>
-        </ApolloProvider>
-      </ThemeProvider>
+                      <BottomNavigationAction
+                        label="Países" value="countries" icon={<OutlinedFlagIcon/>}
+                        component={RouterLink} to="/countries"
+                      />
+                      <BottomNavigationAction
+                        label="Línguas" value="languages" icon={<LanguageIcon/>} component={RouterLink}
+                        to="/languages"
+                      />
+                    </BottomNavigation>
+                  </BottomNavigationContent>
+                </Container>
+              </Fragment>
+            </Router>
+          </ApolloProvider>
+        </ThemeProvider>
+      </StylesProvider>
     );
   }
 }

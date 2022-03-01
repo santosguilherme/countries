@@ -1,8 +1,6 @@
-import React, {Component, Fragment} from 'react';
-
-import {StylesProvider} from '@material-ui/styles';
+import React, { Component, Fragment } from 'react';
+import { StylesProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -13,22 +11,17 @@ import OutlinedFlagIcon from '@material-ui/icons/OutlinedFlag';
 import LanguageIcon from '@material-ui/icons/Language';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
-
-import {ApolloProvider} from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
-
-import {BrowserRouter as Router, Route, Switch, Redirect, NavLink} from 'react-router-dom';
-
-import styled, {ThemeProvider} from 'styled-components'
+import { BrowserRouter as Router, NavLink, Redirect, Route, Switch } from 'react-router-dom';
+import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../theme/GlobalStyle';
-
 import Continents from '../Continents/Continents';
 import Countries from '../Countries/Countries';
 import Languages from '../Languages/Languages';
 import ContinentDetails from '../Continents/ContinentDetails';
 import CountryDetails from '../Countries/CountryDetails';
 import LanguageDetails from '../Languages/LanguageDetails';
-
 
 const Container = styled.div`
   height: 100%;

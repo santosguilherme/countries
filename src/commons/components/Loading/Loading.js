@@ -1,10 +1,8 @@
 import React from 'react';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
-
 import { LoadingContent } from './styles';
 
-function Loading(props) {
+function Loading() {
   return (
     <LoadingContent>
       <CircularProgress />

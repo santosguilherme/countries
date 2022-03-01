@@ -1,12 +1,8 @@
 import React from 'react';
-
 import {withRouter} from 'react-router-dom';
-
 import gql from 'graphql-tag';
-
 import QueryList from '../commons/components/QueryList/QueryList';
 import QueryListItem from '../commons/components/QueryList/QueryListItem';
-
 
 const GET_CONTINENTS = gql`
   {

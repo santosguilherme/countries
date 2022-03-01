@@ -1,20 +1,15 @@
 import React from 'react';
-
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
-
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
-
 import Loading from '../commons/components/Loading/Loading';
 import Error from '../commons/components/Error/Error';
-
 import LanguageListItem from '../Languages/LanguageListItem';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import styled from 'styled-components';
 import Avatar from '@material-ui/core/Avatar';
-
 import PhoneIcon from '@material-ui/icons/Phone';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
@@ -47,7 +42,7 @@ const Header = styled.div`
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   ${DetailsName} {
     flex: 1;
   }
@@ -56,7 +51,7 @@ const Details = styled.div`
 const DetailsName = styled.div`
   display: flex;
   align-items: center;
-  
+
   h1 {
     margin: 0 1rem;
   }
@@ -70,7 +65,7 @@ const DetailsRow = styled.div`
   padding: 0 1rem 1rem;
   display: flex;
   align-items: center;
-  
+
   span + span, svg + span {
     margin-left: 1rem;
   }

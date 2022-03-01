@@ -1,7 +1,5 @@
 import React from 'react';
-
 import {withRouter} from 'react-router-dom';
-
 import QueryListItem from '../commons/components/QueryList/QueryListItem';
 
 function CountryListItem(props) {

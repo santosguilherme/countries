@@ -1,22 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import Loading from '../commons/components/Loading/Loading';
-import Error from '../commons/components/Error/Error';
 import {Query} from 'react-apollo';
 import gql from 'graphql-tag';
-
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Avatar from '@material-ui/core/Avatar';
-import Badge from '@material-ui/core/Badge';
 import List from '@material-ui/core/List';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import Divider from '@material-ui/core/Divider';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import Loading from '../commons/components/Loading/Loading';
+import Error from '../commons/components/Error/Error';
 import CountryListItem from '../Countries/CountryListItem';
 
 const GET_CONTINENT_DETAILS = gql`
@@ -41,7 +33,7 @@ const Header = styled.div`
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   ${DetailsName} {
     flex: 1;
   }
@@ -50,7 +42,7 @@ const Details = styled.div`
 const DetailsName = styled.div`
   display: flex;
   align-items: center;
-  
+
   h1 {
     margin-left: 1rem;
   }

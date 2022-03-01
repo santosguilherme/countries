@@ -1,8 +1,6 @@
 import React from 'react';
-
 import ErrorIcon from '@material-ui/icons/Error';
 import Typography from '@material-ui/core/Typography';
-
 import {ErrorContent} from './styles';
 
 function Error(props) {

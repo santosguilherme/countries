@@ -1,7 +1,6 @@
 import React from 'react';
-import QueryListItem from '../commons/components/QueryList/QueryListItem';
-
 import {withRouter} from 'react-router-dom';
+import QueryListItem from '../commons/components/QueryList/QueryListItem';
 
 function LanguageListItem(props) {
   const {language} = props;

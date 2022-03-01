@@ -39,21 +39,21 @@ const Header = styled.div`
   padding: 1em;
 `;
 
-const Details = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  ${DetailsName} {
-    flex: 1;
-  }
-`;
-
 const DetailsName = styled.div`
   display: flex;
   align-items: center;
 
   h1 {
     margin: 0 1rem;
+  }
+`;
+
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${DetailsName} {
+    flex: 1;
   }
 `;
 
